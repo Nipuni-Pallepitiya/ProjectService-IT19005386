@@ -148,6 +148,12 @@ function validateItemForm()
 	{
 			return "Insert user id.";
 	}
+	// is numerical value
+	var userID = $("#UserID").val().trim();
+	if (!$.isNumeric(userID))
+	{
+	return "Insert a numerical value for userID.";
+	}
 	// sdate
 	if ($("#sdate").val().trim() == "")
 	{
@@ -160,6 +166,16 @@ function validateItemForm()
 	}
 	
 	//validate date
+	var sdate=$("#sdate").val();
+	sdate=new Date(sdate).getTime();
+	
+	var edate=$("#edate").val();
+	edate=new Date(edate).getTime();
+	
+	if(edate<sdate)
+	{
+		return "Invalid dates..end date should be greater than start date";
+	}
 	
 	
 	//  -------------------------------
